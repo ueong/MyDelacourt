@@ -1,0 +1,89 @@
+package xyz.ueong.mydelacourt;
+
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
+/**
+ * Created by ueong on 16. 5. 15.
+ */
+public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdapter.ViewHolder> {
+    List<DelacourtMenu> menus = new ArrayList<>();
+
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_delacourt_menu, parent, false);
+        return new ViewHolder(v);
+    }
+
+    public void clear() {
+        menus.clear();
+    }
+
+    public void setItems(List<DelacourtMenu> menus) {
+        clear();
+        this.menus.addAll(menus);
+        notifyDataSetChanged();
+    }
+
+    public DelacourtMenu getItem(int position) {
+        return menus.get(position);
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        holder.setItem(getItem(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return menus.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        DelacourtMenu item;
+        View itemView;
+
+        @BindView(R.id.title_kor)
+        TextView tvtitleKor;
+        @BindView(R.id.title_eng)
+        TextView tvTitleEng;
+        @BindView(R.id.price)
+        TextView tvPrice;
+        @BindView(R.id.payments)
+        TextView tvPayments;
+        @BindView(R.id.kcal)
+        TextView tvKcal;
+        @BindView(R.id.corner)
+        TextView tvCorner;
+        @BindView(R.id.floor)
+        TextView tvFloor;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            this.itemView = itemView;
+            ButterKnife.bind(this, this.itemView);
+        }
+
+        public void setItem(DelacourtMenu item) {
+            this.item = item;
+            tvtitleKor.setText(item.getTitle_kor());
+            tvTitleEng.setText(item.getTitle_eng());
+            tvPrice.setText(item.getPrice());
+            tvPayments.setText(item.getPayments());
+            tvKcal.setText(item.getKcal());
+            tvCorner.setText(item.getCorner());
+            tvFloor.setText(item.getFloor());
+        }
+    }
+}
