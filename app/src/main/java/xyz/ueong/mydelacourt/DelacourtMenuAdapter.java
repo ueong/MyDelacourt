@@ -92,7 +92,7 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
             tvKcal.setTextColor(decorateKcalTextColor(item));
             tvCorner.setText(item.getCorner());
             tvFloor.setText(item.getFloor().toUpperCase());
-            Picasso.with(this.itemView.getContext()).load("http://daag.pe.kr" + item.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
+            Picasso.with(this.itemView.getContext()).load(Constants.BASE_URL + item.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
         }
 
         private int decorateKcalTextColor(DelacourtMenu item) {
