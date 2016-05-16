@@ -1,9 +1,26 @@
 package xyz.ueong.mydelacourt;
 
+import com.google.gson.Gson;
+
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.List;
+
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.mock.BehaviorDelegate;
+import retrofit2.mock.MockRetrofit;
+import retrofit2.mock.NetworkBehavior;
+import rx.Scheduler;
+import rx.android.plugins.RxAndroidSchedulersHook;
+import rx.observers.TestSubscriber;
+import rx.schedulers.Schedulers;
+import rx.schedulers.TestScheduler;
 
 import static junit.framework.TestCase.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -14,36 +31,28 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class DelacourtPresenterTest {
     DelacourtPresenter presenter;
+    TestSubscriber<List<DelacourtMenu>> testSubscriber = TestSubscriber.create();
     @Mock
     DelacourtView view;
-    @Mock
-    DelacourtInteractor service;
+    DelacourtServiceMock service;
 
-    DelacourtMenus hardcodedMenus;
     @Before
     public void setup() {
+        service = DelacourtServiceFactory.createMockService();
         presenter = new DelacourtPresenter(view, service);
-//        hardcodedMenus = makeHardcodedMenu();
     }
 
-//    @Test
-//    public void shouldShowMenusCalledWhenGetMenuIsCalled() throws Exception {
-//        when(service.getMenus()).thenReturn(hardcodedMenus);
-//        presenter.getMenus();
-//        verify(view).showMenus(hardcodedMenus);
-//    }
-//
-//    private DelacourtMenus makeHardcodedMenu() {
-//        Gson gson = new Gson();
-//
-//        FileReader reader = null;
-//        try {
-//            reader = new FileReader("./jamsilmenu.json");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//        List<DelacourtMenu> menus = gson.fromJson(new JsonReader(reader), new TypeToken<List<DelacourtMenu>>(){}.getType());
-//        return new DelacourtMenus(menus);
-//    }
 
+    @Test
+    public void shouldShowMenusCalledWhenGetMenuIsCalled() throws Exception {
+        presenter.getMenus();
+        verify(view).showMenus(service.makeMock()); //TODO: the test is failing now because of scheduler problem. fix it.
+    }
+
+//    class TestRxAndroidSchedulersHook extends RxAndroidSchedulersHook {
+//        @Override
+//        public Scheduler getMainThreadScheduler() {
+//            return Schedulers.immediate();
+//        }
+//    }
 }

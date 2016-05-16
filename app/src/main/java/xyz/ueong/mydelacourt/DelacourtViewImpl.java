@@ -10,10 +10,17 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.mock.BehaviorDelegate;
+import retrofit2.mock.MockRetrofit;
+import retrofit2.mock.NetworkBehavior;
 
-public class MainActivity extends AppCompatActivity implements DelacourtView {
+public class DelacourtViewImpl extends AppCompatActivity implements DelacourtView {
     private DelacourtPresenter presenter;
     private DelacourtMenuAdapter adapter;
+    private DelacourtService service;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
@@ -21,9 +28,10 @@ public class MainActivity extends AppCompatActivity implements DelacourtView {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.view_delacourt_main);
         ButterKnife.bind(this);
-        presenter = new DelacourtPresenter(this);
+        service = DelacourtServiceFactory.createService();
+        presenter = new DelacourtPresenter(this, service);
         adapter = new DelacourtMenuAdapter();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -41,4 +49,5 @@ public class MainActivity extends AppCompatActivity implements DelacourtView {
     public void showMenus(List<DelacourtMenu> menus) {
         adapter.setItems(menus);
     }
+
 }

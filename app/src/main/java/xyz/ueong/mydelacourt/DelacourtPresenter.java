@@ -4,11 +4,6 @@ import android.util.Log;
 
 import java.util.List;
 
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.mock.BehaviorDelegate;
-import retrofit2.mock.MockRetrofit;
 import rx.Observable;
 import rx.Observer;
 import rx.android.schedulers.AndroidSchedulers;
@@ -22,23 +17,9 @@ public class DelacourtPresenter {
     private DelacourtView view;
     private DelacourtService service;
 
-    public DelacourtPresenter(DelacourtView view) {
+    public DelacourtPresenter(DelacourtView view, DelacourtService service) {
         this.view = view;
-        this.service = createService(true);
-    }
-
-    private DelacourtService createService(boolean isMock) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://daag.pe.kr")
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
-
-        MockRetrofit mockRetrofit = new MockRetrofit.Builder(retrofit).build();
-        final BehaviorDelegate<DelacourtService> delegate = mockRetrofit.create(DelacourtService.class);
-
-        return isMock? new DelecourtServiceMock(delegate) : retrofit.create(DelacourtService.class);
-
+        this.service = service;
     }
 
     public void getMenus() {
@@ -54,6 +35,7 @@ public class DelacourtPresenter {
                     @Override
                     public void onError(Throwable e) {
                         Log.d(TAG, "getMenus()::onError()");
+                        e.printStackTrace();
                     }
 
                     @Override

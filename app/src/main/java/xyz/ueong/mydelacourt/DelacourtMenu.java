@@ -9,6 +9,7 @@ public class DelacourtMenu {
     String title_eng;
     String kcal;
     boolean soldout;
+    boolean very_low_cal;
     boolean low_cal;
     boolean high_cal;
     String price;
@@ -126,5 +127,13 @@ public class DelacourtMenu {
 
     public void setHigh_cal(boolean high_cal) {
         this.high_cal = high_cal;
+    }
+
+    public boolean isVery_low_cal() {
+        return very_low_cal;
+    }
+
+    public void setVery_low_cal(boolean very_low_cal) {
+        this.very_low_cal = very_low_cal;
     }
 }

@@ -1,11 +1,15 @@
 package xyz.ueong.mydelacourt;
 
-import android.content.Context;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +72,8 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
         TextView tvCorner;
         @BindView(R.id.floor)
         TextView tvFloor;
+        @BindView(R.id.image)
+        ImageView ivImage;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -79,11 +85,21 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
             this.item = item;
             tvtitleKor.setText(item.getTitle_kor());
             tvTitleEng.setText(item.getTitle_eng());
-            tvPrice.setText(item.getPrice());
-            tvPayments.setText(item.getPayments());
+            tvPrice.setText(item.getPrice() + "원");
+            tvPrice.setPaintFlags(tvPayments.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); //취소선을 긋는다.
+            tvPayments.setText(item.getPayments() + "원");
             tvKcal.setText(item.getKcal());
+            tvKcal.setTextColor(decorateKcalTextColor(item));
             tvCorner.setText(item.getCorner());
-            tvFloor.setText(item.getFloor());
+            tvFloor.setText(item.getFloor().toUpperCase());
+            Picasso.with(this.itemView.getContext()).load("http://daag.pe.kr" + item.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
+        }
+
+        private int decorateKcalTextColor(DelacourtMenu item) {
+            if(item.isHigh_cal()) return Color.RED;
+            if(item.isLow_cal()) return Color.BLUE;
+            if(item.isVery_low_cal()) return Color.GREEN;
+            return Color.BLACK;
         }
     }
 }
