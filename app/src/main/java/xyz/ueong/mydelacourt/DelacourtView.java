@@ -7,4 +7,5 @@ import java.util.List;
  */
 public interface DelacourtView {
     void showMenus(List<DelacourtMenu> menus);
+    void showEmptyView();
 }

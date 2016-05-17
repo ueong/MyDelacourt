@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -24,20 +26,24 @@ public class DelacourtViewImpl extends AppCompatActivity implements DelacourtVie
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
+    @BindView(R.id.emptyView)
+    TextView emptyView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_delacourt_main);
         ButterKnife.bind(this);
-//        service = DelacourtServiceFactory.createService();
-        service = DelacourtServiceFactory.createMockService();
-        presenter = new DelacourtPresenter(this, service);
+        presenter = new DelacourtPresenter(this);
+        initializeList();
+
+    }
+
+    private void initializeList() {
         adapter = new DelacourtMenuAdapter();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
-
     }
 
     @Override
@@ -48,7 +54,16 @@ public class DelacourtViewImpl extends AppCompatActivity implements DelacourtVie
 
     @Override
     public void showMenus(List<DelacourtMenu> menus) {
+        emptyView.setVisibility(View.GONE);
+        recyclerView.setVisibility(View.VISIBLE);
         adapter.setItems(menus);
+    }
+
+    @Override
+    public void showEmptyView() {
+        recyclerView.setVisibility(View.GONE);
+        emptyView.setVisibility(View.VISIBLE);
+        adapter.clear();
     }
 
 }
