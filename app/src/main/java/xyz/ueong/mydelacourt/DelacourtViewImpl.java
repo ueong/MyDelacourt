@@ -30,7 +30,8 @@ public class DelacourtViewImpl extends AppCompatActivity implements DelacourtVie
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_delacourt_main);
         ButterKnife.bind(this);
-        service = DelacourtServiceFactory.createService();
+//        service = DelacourtServiceFactory.createService();
+        service = DelacourtServiceFactory.createMockService();
         presenter = new DelacourtPresenter(this, service);
         adapter = new DelacourtMenuAdapter();
         recyclerView.setHasFixedSize(true);
