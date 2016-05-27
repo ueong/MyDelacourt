@@ -21,8 +21,16 @@ import butterknife.ButterKnife;
  * Created by ueong on 16. 5. 15.
  */
 public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdapter.ViewHolder> {
-    List<DelacourtMenu> menus = new ArrayList<>();
+    private List<DelacourtMenu> menus = new ArrayList<>();
+    private OnItemClickListener onItemClickListener;
 
+    public interface OnItemClickListener {
+        void onItemClick(DelacourtMenu menu);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
+        this.onItemClickListener = onItemClickListener;
+    }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -46,7 +54,17 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.setItem(getItem(position));
+        final DelacourtMenu menu = getItem(position);
+        holder.setItem(menu);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                if (DelacourtMenuAdapter.this.onItemClickListener != null) {
+                    DelacourtMenuAdapter.this.onItemClickListener.onItemClick(menu);
+                }
+            }
+        });
     }
 
     @Override
@@ -96,9 +114,9 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
         }
 
         private int decorateKcalTextColor(DelacourtMenu item) {
-            if(item.isHigh_cal()) return Color.RED;
-            if(item.isLow_cal()) return Color.BLUE;
-            if(item.isVery_low_cal()) return Color.GREEN;
+            if (item.isHigh_cal()) return Color.RED;
+            if (item.isLow_cal()) return Color.BLUE;
+            if (item.isVery_low_cal()) return Color.GREEN;
             return Color.BLACK;
         }
     }

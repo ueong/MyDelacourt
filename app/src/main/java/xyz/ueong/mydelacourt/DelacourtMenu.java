@@ -1,9 +1,11 @@
 package xyz.ueong.mydelacourt;
 
+import java.io.Serializable;
+
 /**
  * Created by ueong on 16. 5. 15.
  */
-public class DelacourtMenu {
+public class DelacourtMenu implements Serializable {
     String id;
     String title_kor;
     String title_eng;

@@ -62,6 +62,13 @@ public class DelacourtPresenterTest {
         verify(view).showMenus(mockMenus);
     }
 
+    @Test
+    public void shouldShowDetailViewWhenUserClickedListItem() throws Exception {
+        DelacourtMenu menu = makeMenuListFromJson().get(0);
+        presenter.showDetail(menu);
+        verify(view).showDetailView(menu);
+    }
+
     public List<DelacourtMenu> makeMenuListFromJson() {
         String jsonStr = "";
         try {

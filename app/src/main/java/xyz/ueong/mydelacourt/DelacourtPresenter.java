@@ -20,6 +20,7 @@ public class DelacourtPresenter {
     public DelacourtPresenter(DelacourtView view) {
         this.view = view;
         this.service = DelacourtServiceFactory.createMockService();
+//        this.service = DelacourtServiceFactory.createService();
     }
 
     public void setService(DelacourtService service) {
@@ -27,6 +28,7 @@ public class DelacourtPresenter {
     }
 
     public void getMenus() {
+        view.showProgressBar();
         Observable<List<DelacourtMenu>> menus = service.getMenus();
         menus
                 .subscribeOn(AppSchedulers.io())
@@ -35,11 +37,13 @@ public class DelacourtPresenter {
                     @Override
                     public void onCompleted() {
                         Log.d(TAG, "getMenus()::onCompleted()");
+                        view.hideProgressBar();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         Log.d(TAG, "getMenus()::onError()");
+                        view.hideProgressBar();
                         e.printStackTrace();
                     }
 
@@ -55,4 +59,7 @@ public class DelacourtPresenter {
                 });
     }
 
+    public void showDetail(DelacourtMenu menu) {
+        view.showDetailView(menu);
+    }
 }
