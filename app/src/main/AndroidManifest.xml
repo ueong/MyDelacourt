@@ -21,6 +21,7 @@
         </activity>
         <activity
             android:name=".DelacourtDetailViewImpl"
+            android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"
             android:screenOrientation="portrait" />
     </application>
 

@@ -3,22 +3,26 @@ package xyz.ueong.mydelacourt;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by ueong on 16. 5. 27.
  */
 public class DelacourtDetailViewImpl extends Activity implements DelacourtDetailView {
-    private DelacourtMenu menu;
+    DelacourtDetailPresenter presenter;
 
     @BindView(R.id.title_kor)
     TextView tvtitleKor;
@@ -36,17 +40,27 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
     TextView tvFloor;
     @BindView(R.id.image)
     ImageView ivImage;
+    @OnClick(R.id.rootView)
+    public void onClick(View v) {
+        presenter.close();
+    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_delacourt_menu_detail);
+        presenter = new DelacourtDetailPresenter(this);
         ButterKnife.bind(this);
         Bundle bundle = getIntent().getExtras();
-        if(bundle != null && bundle.containsKey("menu")) {
-            menu = (DelacourtMenu) bundle.getSerializable("menu");
+        if (bundle != null && bundle.containsKey("menu")) {
+            presenter.setMenu((DelacourtMenu) bundle.getSerializable("menu"));
         }
 
+        presenter.show();
+    }
+
+    @Override
+    public void show(DelacourtMenu menu) {
         tvtitleKor.setText(menu.getTitle_kor());
         tvTitleEng.setText(menu.getTitle_eng());
         tvPrice.setText(menu.getPrice() + "원");
@@ -65,5 +79,15 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
         if (item.isLow_cal()) return Color.BLUE;
         if (item.isVery_low_cal()) return Color.GREEN;
         return Color.BLACK;
+    }
+
+    @Override
+    public void showError() {
+        Toast.makeText(getApplicationContext(), "Menu not found.", Toast.LENGTH_SHORT);
+    }
+
+    @Override
+    public void close() {
+        finish();
     }
 }
