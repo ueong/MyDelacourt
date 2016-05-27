@@ -22,7 +22,6 @@ import retrofit2.mock.NetworkBehavior;
 public class DelacourtViewImpl extends AppCompatActivity implements DelacourtView {
     private DelacourtPresenter presenter;
     private DelacourtMenuAdapter adapter;
-    private DelacourtService service;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
