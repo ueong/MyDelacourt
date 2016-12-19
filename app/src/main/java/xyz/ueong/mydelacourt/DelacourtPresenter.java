@@ -4,10 +4,8 @@ import android.util.Log;
 
 import java.util.List;
 
-import rx.Observable;
-import rx.Observer;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.observers.DisposableObserver;
 
 /**
  * Created by ueong on 16. 5. 15.
@@ -19,8 +17,7 @@ public class DelacourtPresenter {
 
     public DelacourtPresenter(DelacourtView view) {
         this.view = view;
-        this.service = DelacourtServiceFactory.createMockService();
-//        this.service = DelacourtServiceFactory.createService();
+        this.service = DelacourtServiceFactory.createService();
     }
 
     public void setService(DelacourtService service) {
@@ -33,18 +30,18 @@ public class DelacourtPresenter {
         menus
                 .subscribeOn(AppSchedulers.io())
                 .observeOn(AppSchedulers.mainThread())
-                .subscribe(new Observer<List<DelacourtMenu>>() {
-                    @Override
-                    public void onCompleted() {
-                        Log.d(TAG, "getMenus()::onCompleted()");
-                        view.hideProgressBar();
-                    }
-
+                .subscribe(new DisposableObserver<List<DelacourtMenu>>() {
                     @Override
                     public void onError(Throwable e) {
                         Log.d(TAG, "getMenus()::onError()");
                         view.hideProgressBar();
                         e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "getMenus()::onCompleted()");
+                        view.hideProgressBar();
                     }
 
                     @Override

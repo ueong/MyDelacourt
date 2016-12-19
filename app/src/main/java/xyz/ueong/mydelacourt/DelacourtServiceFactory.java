@@ -1,7 +1,8 @@
 package xyz.ueong.mydelacourt;
 
+import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
+
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
@@ -14,12 +15,15 @@ public class DelacourtServiceFactory {
     private static Retrofit buildRetrofit() {
         return new Retrofit.Builder()
                 .baseUrl(Constants.BASE_URL)
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
 
     public static DelacourtService createService() {
+        if(BuildConfig.FLAVOR.equals("mock")) {
+            return createMockService();
+        }
         return buildRetrofit().create(DelacourtService.class);
 
     }

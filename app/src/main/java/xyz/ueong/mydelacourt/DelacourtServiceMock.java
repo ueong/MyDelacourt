@@ -2,13 +2,12 @@ package xyz.ueong.mydelacourt;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.google.gson.stream.JsonReader;
 
 import java.io.InputStream;
 import java.util.List;
 
+import io.reactivex.Observable;
 import retrofit2.mock.BehaviorDelegate;
-import rx.Observable;
 
 /**
  * Created by ueong on 16. 5. 15.
@@ -25,7 +24,7 @@ public class DelacourtServiceMock implements DelacourtService {
     }
 
     public List<DelacourtMenu> makeMock() {
-        InputStream jsonInputStream = AppContext.applicationContext().getResources().openRawResource(R.raw.jamsil_20160513_lunch);
+        InputStream jsonInputStream = AppContext.applicationContext().getResources().openRawResource(R.raw.jamsilmenu);
 
         Gson gson = new Gson();
         return gson.fromJson(convertStreamToString(jsonInputStream), new TypeToken<List<DelacourtMenu>>(){}.getType());

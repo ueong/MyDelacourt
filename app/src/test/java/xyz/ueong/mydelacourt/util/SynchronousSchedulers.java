@@ -2,8 +2,8 @@ package xyz.ueong.mydelacourt.util;
 
 import org.junit.rules.ExternalResource;
 
-import rx.Scheduler;
-import rx.schedulers.Schedulers;
+import io.reactivex.Scheduler;
+import io.reactivex.schedulers.Schedulers;
 import xyz.ueong.mydelacourt.AppSchedulers;
 
 /**
@@ -17,17 +17,17 @@ public class SynchronousSchedulers extends ExternalResource {
 
             @Override
             public Scheduler mainThread() {
-                return Schedulers.immediate();
+                return Schedulers.trampoline();
             }
 
             @Override
             public Scheduler io() {
-                return Schedulers.immediate();
+                return Schedulers.trampoline();
             }
 
             @Override
             public Scheduler newThread() {
-                return Schedulers.immediate();
+                return Schedulers.trampoline();
             }
         };
     }

@@ -16,11 +16,10 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.observers.TestSubscriber;
+import io.reactivex.Observable;
+import io.reactivex.subscribers.TestSubscriber;
 import xyz.ueong.mydelacourt.util.SynchronousSchedulers;
 
-import static junit.framework.TestCase.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

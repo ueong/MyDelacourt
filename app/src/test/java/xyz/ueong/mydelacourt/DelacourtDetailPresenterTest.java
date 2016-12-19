@@ -13,15 +13,12 @@ import org.mockito.runners.MockitoJUnitRunner;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 
-import rx.Observable;
-import rx.observers.TestSubscriber;
 import xyz.ueong.mydelacourt.util.SynchronousSchedulers;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+
 
 /**
  * Created by ueong on 16. 5. 15.

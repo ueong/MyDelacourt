@@ -1,0 +1,294 @@
+{
+  "breakfast": {
+    "cafeteria2": [
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "봄이온소반",
+        "title_kor": "황태해장국",
+        "description_kor": "깍두기, 흑미밥, 로스팜구이(돈육:수입산), 감자채볶음",
+        "kcal": 833
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Health Giving 365",
+        "title_kor": "아메리칸브렉퍼스트",
+        "description_kor": "계란후라이, 옥수수스프, 단호박샐러드, 시리얼(콘후레이크/초코첵스), 그뤼네소시지(돈육:국내산), 오렌엔탈D/사우전아일랜드D/키위D, 양상추샐러드, 흰우유/오렌지주스/알로에주스, 우유식빵/곡물식빵/화이트블루베리빵, 사과",
+        "kcal": 854
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Snapsnack",
+        "title_kor": "유부김밥",
+        "description_kor": "음료(칼로리미포함), 감귤, 모둠견과류",
+        "kcal": 750
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "트리플C(착즙주스)",
+        "description_kor": "구근류/모둠견과류(택1)(칼로리미포함)",
+        "kcal": 109,
+        "very_low_cal": true
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "참치잡곡식빵샌드위치",
+        "description_kor": "단품과일, 음료(칼로리미포함)",
+        "kcal": 698,
+        "low_cal": true
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "즉석빵 5종中 택2",
+        "description_kor": "화이트블루베리빵, 밀크브레드, 아몬드앙금빵, 예산사과파이, 초코파이, 바나나, 음료(칼로리미포함)",
+        "kcal": 400,
+        "very_low_cal": true
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "과일 5종中 택2",
+        "description_kor": "사과, 시리얼SET, 파인애플, 감귤, 메론, 음료(칼로리미포함)",
+        "kcal": 318,
+        "very_low_cal": true
+      },
+      {
+        "time": "breakfast",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "오븐에구운닭가슴살샐러드",
+        "description_kor": "멸치아몬드주먹밥, 2종과일, 무지방자몽드레싱, 음료(칼로리미포함)",
+        "kcal": 347,
+        "very_low_cal": true
+      }
+    ]
+  },
+  "lunch": {
+    "cafeteria1": [
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "봄이온소반",
+        "title_kor": "돼지불고기",
+        "description_kor": "미역국, 흑미밥, 도토리묵무침, 오징어김치전, 깍두기",
+        "kcal": 898,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "도담찌개",
+        "title_kor": "콩비지찌개",
+        "description_kor": "흑미밥, 떡갈비조림(돈육:국내산), 허브생채, 총각김치",
+        "kcal": 884,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "Snapsnack",
+        "title_kor": "트리플C(착즙주스)",
+        "description_kor": "구근류/모둠견과류(택1)(칼로리미포함)",
+        "kcal": 109,
+        "very_low_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "Snapsnack",
+        "title_kor": "돈가스밀박스",
+        "description_kor": "강낭콩밥, 푸실리샐러드, 오이생채, 포기김치, 생수, 거봉",
+        "kcal": 835
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "XingFu China",
+        "title_kor": "마파두부덮밥",
+        "description_kor": "계란파국, 짜사이채무침, 단무지, 포자만두찜",
+        "kcal": 929,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "테이스티가든",
+        "title_kor": "투움바파스타",
+        "description_kor": "그린채소샐러드&오리엔탈D/유자D, 빈스샐러드, 슈스트링감자튀김&케찹, 오이피클, 할라피뇨, 모닝롤(딸기잼/버터), 사과주스/둥굴레차",
+        "kcal": 931,
+        "very_high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "가츠&엔",
+        "title_kor": "유부김치우동",
+        "description_kor": "생선커틀렛(생선가스:중국산), 양배추샐러드&오리에탈D, 락교, 압축단무지",
+        "kcal": 896,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria1",
+        "corner": "Take me Out",
+        "title_kor": "코브샐러드",
+        "description_kor": "음료(칼로리미포함)",
+        "kcal": 393,
+        "very_low_cal": true
+      }
+    ],
+    "cafeteria2": [
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "봄이온소반",
+        "title_kor": "돼지불고기",
+        "description_kor": "미역국, 오징어김치전, 깍두기, 흑미밥, 도토리묵무침",
+        "kcal": 898,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "도담찌개",
+        "title_kor": "콩비지찌개",
+        "description_kor": "떡갈비조림(돈육:국내산), 허브생채, 흑미밥, 총각김치",
+        "kcal": 883,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "우리味각면",
+        "title_kor": "버섯샤브칼국수",
+        "description_kor": "배추겉절이(배추:국내산,고춧가루:중국산), 고추튀김, 단품과일",
+        "kcal": 810
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "asian*picks",
+        "title_kor": "알루커리/코코넛에그커리/파인애플커리(택2)",
+        "description_kor": "비트양상추샐러드&무지방자몽D, [선택식]시금치치킨티카(계육:브라질), 또띠아, 베지터블비리아니(쌀:태국산), 라씨",
+        "kcal": 825
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Health Giving 365",
+        "title_kor": "더삼삼한제육깻잎철판덮밥",
+        "description_kor": "콩가루배춧국, 양파초간장절임, 숙주나물, 단품과일",
+        "kcal": 845
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "트리플C(착즙주스)",
+        "description_kor": "구근류/모둠견과류(택1)(칼로리미포함)",
+        "kcal": 109,
+        "very_low_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "BROWN GRILL",
+        "title_kor": "소시지김치그라탕",
+        "description_kor": "양상추샐러드&자몽D, 오이피클, 할라피뇨, 단품과일, 장국",
+        "kcal": 924,
+        "high_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Health Giving 365",
+        "title_kor": "골뱅이새싹비빔밥",
+        "description_kor": "콩가루배춧국, 양파초간장절임, 숙주나물, 단품과일",
+        "kcal": 807
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "돈가스밀박스",
+        "description_kor": "푸실리샐러드, 오이생채, 강낭콩밥, 포기김치, 생수, 거봉",
+        "kcal": 834
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "치킨헬시팩",
+        "description_kor": "",
+        "kcal": 467,
+        "very_low_cal": true
+      },
+      {
+        "time": "lunch",
+        "floor": "cafeteria2",
+        "corner": "Take me Out",
+        "title_kor": "과일 5종中 택2",
+        "description_kor": "단감, 오렌지, 배, 거봉, 모둠견과류, 음료(칼로리미포함)",
+        "kcal": 270,
+        "very_low_cal": true
+      }
+    ]
+  },
+  "dinner": {
+    "cafeteria2": [
+      {
+        "time": "dinner",
+        "floor": "cafeteria2",
+        "corner": "봄이온소반",
+        "title_kor": "오삼불고기",
+        "description_kor": "콩나물국, 쌈무, 환어묵볶음, 흑미밥, 상추겉절이",
+        "kcal": 897,
+        "high_cal": true
+      },
+      {
+        "time": "dinner",
+        "floor": "cafeteria2",
+        "corner": "도담찌개",
+        "title_kor": "코다리매운탕",
+        "description_kor": "흑미밥, 청포묵무침, 포기김치, 채소잡채",
+        "kcal": 890,
+        "high_cal": true
+      },
+      {
+        "time": "dinner",
+        "floor": "cafeteria2",
+        "corner": "Snapsnack",
+        "title_kor": "분식 3종中 택2",
+        "description_kor": "수제비라면, 단무지, 포기김치, 충무김밥&오징어초무침, 순대(돈육:국내산)",
+        "kcal": 809
+      },
+      {
+        "time": "dinner",
+        "floor": "cafeteria2",
+        "corner": "Health Giving 365",
+        "title_kor": "오븐닭가슴살카레구이",
+        "description_kor": "비트양상추샐러드&무지방자몽드레싱, 데친브로콜리, 찐고구마, 블랙푸드주먹밥, 두부구이&단호박구이, 단품과일",
+        "kcal": 723,
+        "low_cal": true
+      },
+      {
+        "time": "dinner",
+        "floor": "cafeteria2",
+        "corner": "가츠&엔",
+        "title_kor": "히레가스",
+        "description_kor": "양배추샐러드&유자드레싱, 락교, 장국, 미니쌀밥, 단무지",
+        "kcal": 922,
+        "high_cal": true
+      }
+    ]
+  }
+}
