@@ -7,7 +7,7 @@ public class DelacourtDetailPresenter {
     DelacourtDetailView view;
     DelacourtMenu menu;
 
-    public DelacourtDetailPresenter(DelacourtDetailView view) {
+    public void setView(DelacourtDetailView view) {
         this.view = view;
     }
 

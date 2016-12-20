@@ -9,6 +9,8 @@ public interface DelacourtView {
     void showMenus(List<DelacourtMenu> menus);
     void showEmptyView();
     void hideEmptyView();
+    void showErrorView();
+    void hideErrorView();
     void showDetailView(DelacourtMenu menu);
     void showProgressBar();
     void hideProgressBar();

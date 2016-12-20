@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -20,6 +22,7 @@ import butterknife.OnClick;
  * Created by ueong on 16. 5. 27.
  */
 public class DelacourtDetailViewImpl extends Activity implements DelacourtDetailView {
+    @Inject
     DelacourtDetailPresenter presenter;
 
     @BindView(R.id.title_kor)
@@ -47,8 +50,9 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_delacourt_menu_detail);
-        presenter = new DelacourtDetailPresenter(this);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
+        presenter.setView(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("menu")) {
             presenter.setMenu((DelacourtMenu) bundle.getSerializable("menu"));

@@ -35,7 +35,8 @@ public class DelacourtDetailPresenterTest {
 
     @Before
     public void setup() {
-        presenter = new DelacourtDetailPresenter(view);
+        presenter = new DelacourtDetailPresenter();
+        presenter.setView(view);
     }
 
     @Test

@@ -14,17 +14,23 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DelacourtViewImpl extends Activity implements DelacourtView {
-    private DelacourtPresenter presenter;
-    private DelacourtMenuAdapter adapter;
+    @Inject
+    DelacourtPresenter presenter;
+    @Inject
+    DelacourtMenuAdapter adapter;
 
     @BindView(R.id.recyclerView)
     RecyclerView recyclerView;
     @BindView(R.id.emptyView)
     TextView emptyView;
+    @BindView(R.id.errorView)
+    TextView errorView;
     @BindView(R.id.swipeLayout)
     SwipeRefreshLayout swipeLayout;
 
@@ -32,8 +38,9 @@ public class DelacourtViewImpl extends Activity implements DelacourtView {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_delacourt_main);
+        App.getComponent().inject(this);
         ButterKnife.bind(this);
-        presenter = new DelacourtPresenter(this);
+        presenter.setView(this);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -45,7 +52,6 @@ public class DelacourtViewImpl extends Activity implements DelacourtView {
     }
 
     private void initializeList() {
-        adapter = new DelacourtMenuAdapter();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
@@ -76,6 +82,7 @@ public class DelacourtViewImpl extends Activity implements DelacourtView {
     public void showEmptyView() {
         recyclerView.setVisibility(View.GONE);
         emptyView.setVisibility(View.VISIBLE);
+        errorView.setVisibility(View.GONE);
         adapter.clear();
     }
 
@@ -83,6 +90,22 @@ public class DelacourtViewImpl extends Activity implements DelacourtView {
     public void hideEmptyView() {
         recyclerView.setVisibility(View.VISIBLE);
         emptyView.setVisibility(View.GONE);
+        errorView.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showErrorView() {
+        recyclerView.setVisibility(View.GONE);
+        emptyView.setVisibility(View.GONE);
+        errorView.setVisibility(View.VISIBLE);
+        adapter.clear();
+    }
+
+    @Override
+    public void hideErrorView() {
+        recyclerView.setVisibility(View.VISIBLE);
+        emptyView.setVisibility(View.GONE);
+        errorView.setVisibility(View.GONE);
     }
 
     @Override

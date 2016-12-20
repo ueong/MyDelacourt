@@ -4,6 +4,8 @@ import android.util.Log;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import io.reactivex.Observable;
 import io.reactivex.observers.DisposableObserver;
 
@@ -11,17 +13,17 @@ import io.reactivex.observers.DisposableObserver;
  * Created by ueong on 16. 5. 15.
  */
 public class DelacourtPresenter {
-    private static final String TAG = "DelacourtPresenter";
+    private static final String TAG = DelacourtPresenter.class.getSimpleName();
     private DelacourtView view;
     private DelacourtService service;
 
-    public DelacourtPresenter(DelacourtView view) {
-        this.view = view;
-        this.service = DelacourtServiceFactory.createService();
+    @Inject
+    public DelacourtPresenter(DelacourtService service) {
+        this.service = service;
     }
 
-    public void setService(DelacourtService service) {
-        this.service = service;
+    public void setView(DelacourtView view) {
+        this.view = view;
     }
 
     public void getMenus() {
@@ -35,7 +37,7 @@ public class DelacourtPresenter {
                     public void onError(Throwable e) {
                         Log.d(TAG, "getMenus()::onError()");
                         view.hideProgressBar();
-                        e.printStackTrace();
+                        view.showErrorView();
                     }
 
                     @Override

@@ -1,10 +1,14 @@
 package xyz.ueong.mydelacourt;
 
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.io.InputStream;
 import java.util.List;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import retrofit2.mock.BehaviorDelegate;
@@ -13,20 +17,24 @@ import retrofit2.mock.BehaviorDelegate;
  * Created by ueong on 16. 5. 15.
  */
 public class DelacourtServiceMock implements DelacourtService {
-    private final BehaviorDelegate<DelacourtService> delegate;
+    private BehaviorDelegate<DelacourtService> delegate;
+    private Gson gson;
+    private Context context;
 
-    public DelacourtServiceMock(BehaviorDelegate<DelacourtService> delegate) {
+    @Inject
+    public DelacourtServiceMock(Context context, Gson gson, BehaviorDelegate<DelacourtService> delegate) {
         this.delegate = delegate;
+        this.gson = gson;
+        this.context = context;
     }
+
     @Override
     public Observable<List<DelacourtMenu>> getMenus() {
         return delegate.returningResponse(makeMock()).getMenus();
     }
 
     public List<DelacourtMenu> makeMock() {
-        InputStream jsonInputStream = AppContext.applicationContext().getResources().openRawResource(R.raw.jamsilmenu);
-
-        Gson gson = new Gson();
+        InputStream jsonInputStream = context.getResources().openRawResource(R.raw.jamsilmenu);
         return gson.fromJson(convertStreamToString(jsonInputStream), new TypeToken<List<DelacourtMenu>>(){}.getType());
     }
 

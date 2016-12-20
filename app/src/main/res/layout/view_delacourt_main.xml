@@ -29,4 +29,11 @@
         android:gravity="center"
         android:visibility="gone"
         android:text="지금은 운영하지 않습니다."/>
+    <TextView
+        android:id="@+id/errorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:visibility="gone"
+        android:text="오류가 발생했습니다."/>
 </RelativeLayout>

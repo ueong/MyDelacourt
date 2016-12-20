@@ -8,7 +8,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -39,8 +41,8 @@ public class DelacourtPresenterTest {
 
     @Before
     public void setup() {
-        presenter = new DelacourtPresenter(view);
-        presenter.setService(service);
+        presenter = new DelacourtPresenter(service);
+        presenter.setView(view);
     }
 
     @Test
@@ -48,6 +50,7 @@ public class DelacourtPresenterTest {
         List<DelacourtMenu> emptyMenus = new ArrayList<>();
         when(service.getMenus()).thenReturn(Observable.just(emptyMenus));
         presenter.getMenus();
+        verify(view).hideProgressBar();
         verify(view).showEmptyView();
     }
 
@@ -56,6 +59,7 @@ public class DelacourtPresenterTest {
         List<DelacourtMenu> mockMenus = makeMenuListFromJson();
         when(service.getMenus()).thenReturn(Observable.just(mockMenus));
         presenter.getMenus();
+        verify(view).hideProgressBar();
         verify(view).showMenus(mockMenus);
     }
 
@@ -64,6 +68,19 @@ public class DelacourtPresenterTest {
         DelacourtMenu menu = makeMenuListFromJson().get(0);
         presenter.showDetail(menu);
         verify(view).showDetailView(menu);
+    }
+
+    @Test
+    public void shouldShowErrorViewWhenErrorOccured() throws Exception {
+        when(service.getMenus()).thenAnswer(new Answer<Object>() {
+            @Override
+            public Object answer(InvocationOnMock invocation) throws Throwable {
+                return Observable.error(new DelacourtException("Just error"));
+            }
+        });
+        presenter.getMenus();
+        verify(view).hideProgressBar();
+        verify(view).showErrorView();
     }
 
     public List<DelacourtMenu> makeMenuListFromJson() {
@@ -76,7 +93,8 @@ public class DelacourtPresenterTest {
         }
 
         Gson gson = new Gson();
-        return gson.fromJson(jsonStr, new TypeToken<List<DelacourtMenu>>(){}.getType());
+        return gson.fromJson(jsonStr, new TypeToken<List<DelacourtMenu>>() {
+        }.getType());
     }
 
     private String convertStreamToString(final InputStream is) {
