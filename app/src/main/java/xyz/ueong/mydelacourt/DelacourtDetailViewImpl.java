@@ -3,10 +3,8 @@ package xyz.ueong.mydelacourt;
 import android.app.Activity;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -70,7 +68,7 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
         tvKcal.setTextColor(decorateKcalTextColor(menu));
         tvCorner.setText(menu.getCorner());
         tvFloor.setText(menu.getFloor().toUpperCase());
-        Picasso.with(getApplicationContext()).load(Constants.BASE_URL + menu.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
+        Picasso.with(getApplicationContext()).load(menu.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
     }
 
 

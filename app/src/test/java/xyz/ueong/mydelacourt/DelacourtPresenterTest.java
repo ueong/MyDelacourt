@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.Observable;
-import io.reactivex.subscribers.TestSubscriber;
 import xyz.ueong.mydelacourt.util.SynchronousSchedulers;
 
 import static org.mockito.Mockito.verify;
@@ -29,7 +28,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class DelacourtPresenterTest {
     DelacourtPresenter presenter;
-    TestSubscriber<List<DelacourtMenu>> testSubscriber = TestSubscriber.create();
     @Mock
     DelacourtView view;
     @Mock
