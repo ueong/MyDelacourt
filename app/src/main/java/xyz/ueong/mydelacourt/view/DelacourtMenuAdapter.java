@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.view;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -16,6 +16,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.ueong.mydelacourt.model.DelacourtMenu;
+import xyz.ueong.mydelacourt.R;
 
 /**
  * Created by ueong on 16. 5. 15.

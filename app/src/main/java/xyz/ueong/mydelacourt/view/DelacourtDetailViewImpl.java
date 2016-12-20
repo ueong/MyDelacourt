@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.view;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -17,6 +17,10 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import xyz.ueong.mydelacourt.App;
+import xyz.ueong.mydelacourt.presenter.DelacourtDetailPresenter;
+import xyz.ueong.mydelacourt.model.DelacourtMenu;
+import xyz.ueong.mydelacourt.R;
 
 /**
  * Created by ueong on 16. 5. 27.

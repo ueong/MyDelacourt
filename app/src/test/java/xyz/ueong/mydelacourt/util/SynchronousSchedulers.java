@@ -4,7 +4,7 @@ import org.junit.rules.ExternalResource;
 
 import io.reactivex.Scheduler;
 import io.reactivex.schedulers.Schedulers;
-import xyz.ueong.mydelacourt.AppSchedulers;
+import xyz.ueong.mydelacourt.common.AppSchedulers;
 
 /**
  * Created by ueong on 16. 5. 18.

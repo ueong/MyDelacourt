@@ -12,7 +12,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".DelacourtViewImpl"
+            android:name=".view.DelacourtViewImpl"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DelacourtDetailViewImpl"
+            android:name=".view.DelacourtDetailViewImpl"
             android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"
             android:screenOrientation="portrait" />
     </application>

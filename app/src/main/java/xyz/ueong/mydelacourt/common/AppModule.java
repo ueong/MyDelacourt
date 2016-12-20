@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.common;
 
 import android.content.Context;
 
@@ -12,6 +12,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.mock.BehaviorDelegate;
 import retrofit2.mock.MockRetrofit;
 import retrofit2.mock.NetworkBehavior;
+import xyz.ueong.mydelacourt.BuildConfig;
+import xyz.ueong.mydelacourt.presenter.DelacourtDetailPresenter;
+import xyz.ueong.mydelacourt.view.DelacourtMenuAdapter;
+import xyz.ueong.mydelacourt.presenter.DelacourtPresenter;
+import xyz.ueong.mydelacourt.model.DelacourtService;
+import xyz.ueong.mydelacourt.model.DelacourtServiceMock;
 
 @Module
 public class AppModule {

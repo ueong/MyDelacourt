@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.common;
 
 import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;

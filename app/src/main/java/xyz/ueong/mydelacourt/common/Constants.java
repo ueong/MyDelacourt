@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.common;
 
 /**
  * Created by ueong on 16. 5. 16.

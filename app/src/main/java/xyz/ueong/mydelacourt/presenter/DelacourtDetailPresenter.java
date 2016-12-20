@@ -1,4 +1,7 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.presenter;
+
+import xyz.ueong.mydelacourt.model.DelacourtMenu;
+import xyz.ueong.mydelacourt.view.DelacourtDetailView;
 
 /**
  * Created by ueong on 16. 5. 28.

@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.view;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -18,6 +18,10 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import xyz.ueong.mydelacourt.App;
+import xyz.ueong.mydelacourt.model.DelacourtMenu;
+import xyz.ueong.mydelacourt.presenter.DelacourtPresenter;
+import xyz.ueong.mydelacourt.R;
 
 public class DelacourtViewImpl extends Activity implements DelacourtView {
     @Inject

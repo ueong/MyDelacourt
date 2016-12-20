@@ -1,6 +1,8 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.common;
 
 import dagger.Component;
+import xyz.ueong.mydelacourt.view.DelacourtDetailViewImpl;
+import xyz.ueong.mydelacourt.view.DelacourtViewImpl;
 
 /**
  * Created by actmember on 12/20/16.

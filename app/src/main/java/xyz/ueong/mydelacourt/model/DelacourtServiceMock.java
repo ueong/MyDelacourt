@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.model;
 
 import android.content.Context;
 
@@ -12,6 +12,7 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import retrofit2.mock.BehaviorDelegate;
+import xyz.ueong.mydelacourt.R;
 
 /**
  * Created by ueong on 16. 5. 15.

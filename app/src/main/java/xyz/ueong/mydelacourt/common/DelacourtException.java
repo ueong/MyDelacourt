@@ -1,4 +1,4 @@
-package xyz.ueong.mydelacourt;
+package xyz.ueong.mydelacourt.common;
 
 public class DelacourtException extends RuntimeException {
     public DelacourtException() {

@@ -15,7 +15,10 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
 
+import xyz.ueong.mydelacourt.model.DelacourtMenu;
+import xyz.ueong.mydelacourt.presenter.DelacourtDetailPresenter;
 import xyz.ueong.mydelacourt.util.SynchronousSchedulers;
+import xyz.ueong.mydelacourt.view.DelacourtDetailView;
 
 import static org.mockito.Mockito.verify;
 
