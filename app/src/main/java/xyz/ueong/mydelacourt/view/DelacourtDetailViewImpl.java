@@ -59,7 +59,7 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
         presenter.setView(this);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null && bundle.containsKey("menu")) {
-            presenter.setMenu((DelacourtMenu) bundle.getSerializable("menu"));
+            presenter.setMenu((DelacourtMenu) bundle.getParcelable("menu"));
         }
 
         presenter.show();
@@ -67,7 +67,7 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
 
     @Override
     public void show(DelacourtMenu menu) {
-        tvtitleKor.setText(menu.getTitle_kor());
+        tvtitleKor.setText(menu.getTitleKor());
         tvTitleEng.setText(menu.getTitle_eng());
         tvPrice.setText(menu.getPrice() + "원");
         tvPrice.setPaintFlags(tvPayments.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); //취소선을 긋는다.
@@ -76,14 +76,14 @@ public class DelacourtDetailViewImpl extends Activity implements DelacourtDetail
         tvKcal.setTextColor(decorateKcalTextColor(menu));
         tvCorner.setText(menu.getCorner());
         tvFloor.setText(menu.getFloor().toUpperCase());
-        Picasso.with(getApplicationContext()).load(menu.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
+        Picasso.with(getApplicationContext()).load(menu.getImgSrc()).error(R.drawable.no_image_available).into(ivImage);
     }
 
 
     private int decorateKcalTextColor(DelacourtMenu item) {
-        if (item.isHigh_cal()) return Color.RED;
-        if (item.isLow_cal()) return Color.BLUE;
-        if (item.isVery_low_cal()) return Color.GREEN;
+        if (item.isHighCal()) return Color.RED;
+        if (item.isLowCal()) return Color.BLUE;
+        if (item.isVeryLowCal()) return Color.GREEN;
         return Color.BLACK;
     }
 

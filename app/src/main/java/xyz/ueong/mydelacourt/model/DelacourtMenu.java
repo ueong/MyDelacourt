@@ -1,39 +1,98 @@
 package xyz.ueong.mydelacourt.model;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by ueong on 16. 5. 15.
  */
-public class DelacourtMenu implements Serializable {
+public class DelacourtMenu implements Parcelable {
     String id;
-    String title_kor;
-    String title_eng;
+    @SerializedName("title_kor")
+    String titleKor;
+    @SerializedName("title_eng")
+    String titleEng;
     String kcal;
     boolean soldout;
-    boolean very_low_cal;
-    boolean low_cal;
-    boolean high_cal;
+    @SerializedName("very_low_cal")
+    boolean veryLowCal;
+    @SerializedName("low_cal")
+    boolean lowCal;
+    @SerializedName("high_cal")
+    boolean highCal;
     String price;
     String payments;
-    String img_src;
+    @SerializedName("img_src")
+    String imgSrc;
     String corner;
     String floor;
 
-    public DelacourtMenu(String id, String title_kor, String title_eng, String kcal, boolean soldout, boolean low_cal, boolean high_cal, String price, String payments, String img_src, String corner, String floor) {
+    public DelacourtMenu(String id, String titleKor, String titleEng, String kcal, boolean soldout, boolean lowCal, boolean highCal, String price, String payments, String imgSrc, String corner, String floor) {
         this.id = id;
-        this.title_kor = title_kor;
-        this.title_eng = title_eng;
+        this.titleKor = titleKor;
+        this.titleEng = titleEng;
         this.kcal = kcal;
         this.soldout = soldout;
-        this.low_cal = low_cal;
-        this.high_cal = high_cal;
+        this.lowCal = lowCal;
+        this.highCal = highCal;
         this.price = price;
         this.payments = payments;
-        this.img_src = img_src;
+        this.imgSrc = imgSrc;
         this.corner = corner;
         this.floor = floor;
     }
+
+    protected DelacourtMenu(Parcel in) {
+        id = in.readString();
+        titleKor = in.readString();
+        titleEng = in.readString();
+        kcal = in.readString();
+        soldout = in.readByte() != 0;
+        veryLowCal = in.readByte() != 0;
+        lowCal = in.readByte() != 0;
+        highCal = in.readByte() != 0;
+        price = in.readString();
+        payments = in.readString();
+        imgSrc = in.readString();
+        corner = in.readString();
+        floor = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
+        dest.writeString(titleKor);
+        dest.writeString(titleEng);
+        dest.writeString(kcal);
+        dest.writeByte((byte) (soldout ? 1 : 0));
+        dest.writeByte((byte) (veryLowCal ? 1 : 0));
+        dest.writeByte((byte) (lowCal ? 1 : 0));
+        dest.writeByte((byte) (highCal ? 1 : 0));
+        dest.writeString(price);
+        dest.writeString(payments);
+        dest.writeString(imgSrc);
+        dest.writeString(corner);
+        dest.writeString(floor);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<DelacourtMenu> CREATOR = new Creator<DelacourtMenu>() {
+        @Override
+        public DelacourtMenu createFromParcel(Parcel in) {
+            return new DelacourtMenu(in);
+        }
+
+        @Override
+        public DelacourtMenu[] newArray(int size) {
+            return new DelacourtMenu[size];
+        }
+    };
 
     public String getId() {
         return id;
@@ -43,20 +102,20 @@ public class DelacourtMenu implements Serializable {
         this.id = id;
     }
 
-    public String getTitle_kor() {
-        return title_kor;
+    public String getTitleKor() {
+        return titleKor;
     }
 
-    public void setTitle_kor(String title_kor) {
-        this.title_kor = title_kor;
+    public void setTitleKor(String titleKor) {
+        this.titleKor = titleKor;
     }
 
     public String getTitle_eng() {
-        return title_eng;
+        return titleEng;
     }
 
     public void setTitle_eng(String title_eng) {
-        this.title_eng = title_eng;
+        this.titleEng = title_eng;
     }
 
     public String getKcal() {
@@ -91,12 +150,12 @@ public class DelacourtMenu implements Serializable {
         this.payments = payments;
     }
 
-    public String getImg_src() {
-        return img_src;
+    public String getImgSrc() {
+        return imgSrc;
     }
 
-    public void setImg_src(String img_src) {
-        this.img_src = img_src;
+    public void setImgSrc(String imgSrc) {
+        this.imgSrc = imgSrc;
     }
 
     public String getCorner() {
@@ -115,27 +174,27 @@ public class DelacourtMenu implements Serializable {
         this.floor = floor;
     }
 
-    public boolean isLow_cal() {
-        return low_cal;
+    public boolean isLowCal() {
+        return lowCal;
     }
 
-    public void setLow_cal(boolean low_cal) {
-        this.low_cal = low_cal;
+    public void setLowCal(boolean lowCal) {
+        this.lowCal = lowCal;
     }
 
-    public boolean isHigh_cal() {
-        return high_cal;
+    public boolean isHighCal() {
+        return highCal;
     }
 
-    public void setHigh_cal(boolean high_cal) {
-        this.high_cal = high_cal;
+    public void setHighCal(boolean highCal) {
+        this.highCal = highCal;
     }
 
-    public boolean isVery_low_cal() {
-        return very_low_cal;
+    public boolean isVeryLowCal() {
+        return veryLowCal;
     }
 
-    public void setVery_low_cal(boolean very_low_cal) {
-        this.very_low_cal = very_low_cal;
+    public void setVeryLowCal(boolean veryLowCal) {
+        this.veryLowCal = veryLowCal;
     }
 }

@@ -103,7 +103,7 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
 
         public void setItem(DelacourtMenu item) {
             this.item = item;
-            tvtitleKor.setText(item.getTitle_kor());
+            tvtitleKor.setText(item.getTitleKor());
             tvTitleEng.setText(item.getTitle_eng());
             tvPrice.setText(item.getPrice() + "원");
             tvPrice.setPaintFlags(tvPayments.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG); //취소선을 긋는다.
@@ -112,14 +112,14 @@ public class DelacourtMenuAdapter extends RecyclerView.Adapter<DelacourtMenuAdap
             tvKcal.setTextColor(decorateKcalTextColor(item));
             tvCorner.setText(item.getCorner());
             tvFloor.setText(item.getFloor().toUpperCase());
-//            Picasso.with(this.itemView.getContext()).load(Constants.BASE_URL + item.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
-            Picasso.with(this.itemView.getContext()).load(item.getImg_src()).error(R.drawable.no_image_available).into(ivImage);
+//            Picasso.with(this.itemView.getContext()).load(Constants.BASE_URL + item.getImgSrc()).error(R.drawable.no_image_available).into(ivImage);
+            Picasso.with(this.itemView.getContext()).load(item.getImgSrc()).error(R.drawable.no_image_available).into(ivImage);
         }
 
         private int decorateKcalTextColor(DelacourtMenu item) {
-            if (item.isHigh_cal()) return Color.RED;
-            if (item.isLow_cal()) return Color.BLUE;
-            if (item.isVery_low_cal()) return Color.GREEN;
+            if (item.isHighCal()) return Color.RED;
+            if (item.isLowCal()) return Color.BLUE;
+            if (item.isVeryLowCal()) return Color.GREEN;
             return Color.BLACK;
         }
     }

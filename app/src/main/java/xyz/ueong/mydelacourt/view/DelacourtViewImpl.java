@@ -116,7 +116,7 @@ public class DelacourtViewImpl extends Activity implements DelacourtView {
     public void showDetailView(DelacourtMenu menu) {
         Intent intent = new Intent(this, DelacourtDetailViewImpl.class);
         Bundle extras = new Bundle();
-        extras.putSerializable("menu", menu);
+        extras.putParcelable("menu", menu);
         intent.putExtras(extras);
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
